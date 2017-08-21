@@ -23,6 +23,7 @@ describe('Person', function() {
       Person.firstName = "Joe";
       Person.lastName = "Bloggs";
       expect(Person.fullName()).to_equal("Joe Bloggs");
+      expect(Person.fullName()).not_to_equal("Joe Bloggs");
     });
   });
 });
