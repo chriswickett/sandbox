@@ -2,7 +2,6 @@ require('./test_library.js');
 var increment = require('./some_functions.js').increment;
 var Person = require('./some_functions.js').Person;
 
-// Actual tests
 describe('increment()', function() {
   it('increments by 1', function() {
     expect(increment(1)).to_equal(2);
