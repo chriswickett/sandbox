@@ -18,7 +18,7 @@ describe('increment()', function() {
 });
 
 describe('Person', function() {
-  describe('fullName', function() {
+  describe('.fullName()', function() {
     it('returns the first name plus the last name', function() {
       Person.firstName = "Joe";
       Person.lastName = "Bloggs";
