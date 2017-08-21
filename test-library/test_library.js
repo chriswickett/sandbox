@@ -1,9 +1,18 @@
 var printOut = require('./utils.js').printOut;
 
+var indentation = "";
+
+var indent = function(block) {
+  indentation += "  ";
+  block();
+  indentation = indentation.slice(0, -2);
+};
+
 describe = function(subject, assertions) {
-  printOut('\n--------------', 'white');
-  printOut(subject, 'white');
-  assertions();
+  indent(function() {
+    printOut(indentation + subject, 'white');
+    assertions();
+  });
 };
 
 expect = function(subject) {
@@ -21,11 +30,13 @@ expect = function(subject) {
 };
 
 it = function(expectation, assertion) {
-  printOut(`  It ${expectation}`, 'white');
-  try {
-    assertion();
-    printOut("    Passed.", 'green');
-  } catch(error) {
-    printOut("    " + error, 'red');
-  }
+  indent(function() {
+    printOut(indentation + `It ${expectation}`, 'white');
+    try {
+      assertion();
+      printOut(indentation + "  Passed.", 'green');
+    } catch(error) {
+      printOut(indentation + "  " + error, 'red');
+    }
+  });
 };
