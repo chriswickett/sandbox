@@ -2,6 +2,7 @@ require('./test_library.js');
 var increment = require('./some_functions.js').increment;
 var Person = require('./some_functions.js').Person;
 
+// Actual tests
 describe('increment()', function() {
   it('increments by 1', function() {
     expect(increment(1)).to_equal(2);
@@ -17,12 +18,19 @@ describe('increment()', function() {
 });
 
 describe('Person', function() {
-  describe('.fullName()', function() {
+  describe('fullName', function() {
     it('returns the first name plus the last name', function() {
       Person.firstName = "Joe";
       Person.lastName = "Bloggs";
       expect(Person.fullName()).to_equal("Joe Bloggs");
-      expect(Person.fullName()).not_to_equal("Joe Bloggs");
     });
   });
+  
+  describe('fullName3',function(){
+    it('returns full name',()=>{
+      Person.firstName="David";
+      Person.lastName="Smith";
+      expect(Person.fullName()).to_equal("David Smith");
+    })
+  })
 });
